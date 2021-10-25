@@ -10,8 +10,15 @@ namespace OymakGroupCase.Entities.Concrete
 {
     public class Rover:IRover
     {
-        public Plateau plateau { get; set; }
-        public Position position { get; set; }
-        public Directions  directions { get; set; }
+        public Plateau _plateau { get; set; }
+        public Position _position { get; set; }
+        public Directions  _directions { get; set; }
+
+        public Rover(Plateau plateau,Position position,Directions directions)
+        {
+            _plateau = plateau;
+            _position = position;
+            _directions = directions;
+        }
     }
 }
