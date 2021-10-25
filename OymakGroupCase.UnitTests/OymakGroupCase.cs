@@ -7,17 +7,9 @@ namespace OymakGroupCase.UnitTests
     public class OymakGroupCase
     {
         [TestMethod]
-        public void ProgramCs()
+        public void Given_5_5_plateau_and_1_2_positionIsCorrect()
         {
-            Position position = new Position(5,5);
-
-            System.Console.WriteLine(position);
-
-            Plateau plateau = new Plateau(1,3);
-
-            System.Console.WriteLine(plateau);
-            Rover rover = new Rover(plateau,position,Properties.Directions.North);
-            System.Console.WriteLine(rover);
+           
         }
     }
 }

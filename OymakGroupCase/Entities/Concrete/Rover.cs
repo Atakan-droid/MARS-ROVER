@@ -1,4 +1,5 @@
-﻿using OymakGroupCase.Entities.Abstract;
+﻿using OymakGroupCase.Business.Concrete;
+using OymakGroupCase.Entities.Abstract;
 using OymakGroupCase.Properties;
 using System;
 using System.Collections.Generic;
@@ -10,15 +11,15 @@ namespace OymakGroupCase.Entities.Concrete
 {
     public class Rover:IRover
     {
-        public Plateau _plateau { get; set; }
-        public Position _position { get; set; }
-        public Directions  _directions { get; set; }
+        public Plateau plateau { get; set; }
+        public Position position { get; set; }
+        public Directions directions = RoverManager.directions;
 
-        public Rover(Plateau plateau,Position position,Directions directions)
+        public Rover(Plateau _plateau,Position _position,Directions _directions)
         {
-            _plateau = plateau;
-            _position = position;
-            _directions = directions;
+            plateau = _plateau;
+            position = _position;
+            directions = _directions;
         }
     }
 }

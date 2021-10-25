@@ -10,13 +10,18 @@ namespace OymakGroupCase.Entities.Concrete
     public class Plateau:IPlateau
     {   
         //props
-        public int _Width { get; set; }
-        public int _Height { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public int Min_Height { get; set; }
+        public int Min_Width { get; set; }
 
-        public Plateau(int Width,int Height)
+
+        public Plateau(int _Width,int _Height)
         {
-            _Width = Width;
-            _Height = Height;
+            Width = _Width;
+            Height = _Height;
+            Min_Height = 0;
+            Min_Width = 0;
         }
     }
 }

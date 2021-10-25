@@ -15,8 +15,8 @@ namespace OymakGroupCase.Entities.Concrete
 
         public Position(int _x,int _y)
         {
-            _x = x;
-            _y = y;
+            x = _x;
+            y = _y;
         }
     }
 }
