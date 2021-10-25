@@ -8,10 +8,13 @@ namespace OymakGroupCase
     {
         static void Main(string[] args)
         {
-            Position position = new Position(1,3);
+            Position position = new Position(1,2);
             Plateau plateau = new Plateau(5,5);
-            Rover rover = new Rover(plateau,position,Properties.Directions.East);
-            Console.WriteLine(RoverManager.CurrentPosition(rover)); 
+            Rover rover = new Rover(plateau,position,Properties.Directions.North);
+            RoverManager roverManager = new RoverManager(rover);
+            roverManager.Moving("LMLMLMLMM");
+       
+            Console.WriteLine(roverManager.CurrentPosition()); 
         }
     }
 }

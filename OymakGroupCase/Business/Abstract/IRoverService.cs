@@ -10,8 +10,9 @@ namespace OymakGroupCase.Business.Abstract
 {
     public interface IRoverService
     {
-        string CurrentPosition(Rover rover);
-        bool Move(Rover rover);
-        Directions IsCorrectDirection(Rover rover);
+        string CurrentPosition();
+        bool Move();
+        Directions IsCorrectDirection();
+        void Moving(string command);
     }
 }

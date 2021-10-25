@@ -13,7 +13,8 @@ namespace OymakGroupCase.Entities.Concrete
     {
         public Plateau plateau { get; set; }
         public Position position { get; set; }
-        public Directions directions = RoverManager.directions;
+
+        public Directions directions { get; set; }
 
         public Rover(Plateau _plateau,Position _position,Directions _directions)
         {

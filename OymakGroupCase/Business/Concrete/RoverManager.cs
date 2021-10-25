@@ -9,21 +9,25 @@ using System.Threading.Tasks;
 
 namespace OymakGroupCase.Business.Concrete
 {
-    public static class RoverManager 
+    public class RoverManager : IRoverService
     {
-
-        public static readonly Directions directions = Directions.North;
-        public static string CurrentPosition(Rover rover)
+        public  Rover _rover;
+        public RoverManager(Rover rover)
         {
-            return rover.position.x + " " + rover.position.y + " " + rover.directions;
+            _rover = rover;
+        }
+        public  Directions directions = Directions.North;
+        public string CurrentPosition()
+        {
+            return _rover.position.x + " " + _rover.position.y + " " + _rover.directions;
         }
 
-        public static Directions IsCorrectDirection(Rover rover)
+        public Directions IsCorrectDirection()
         {
             Directions direction;
             try
             {
-                direction = rover.directions;
+                direction = _rover.directions;
             }
             catch (Exception)
             {
@@ -33,28 +37,63 @@ namespace OymakGroupCase.Business.Concrete
             return direction;
         }
 
-        public static bool Move(Rover rover)
+        public bool Move()
         {
-            if (!rover.plateau.IsPositionCorrect(rover.position))
+            if (!_rover.plateau.IsPositionCorrect(_rover.position))
             {
                 return false;
             }
             switch (directions)
             {
                 case Directions.North:
-                    rover.position.y += 1;
+                    _rover.position.y += 1;
                     break;
                 case Directions.East:
-                    rover.position.x += 1;
+                    _rover.position.x += 1;
                     break;
                 case Directions.South:
-                    rover.position.y -= 1;
+                    _rover.position.y -= 1;
                     break;
                 case Directions.West:
-                    rover.position.x -= 1;
+                    _rover.position.x -= 1;
                     break;
             }
             return true;
         }
+
+        public void Moving(string command)
+        {
+            for (int i = 0; i < command.Length; i++)
+            {
+                if ('L' == command[i])
+                    if ((int)directions - 1 < (int)Directions.North)
+                    {
+                        directions = Directions.West;
+                    }
+                    else
+                    {
+                        directions = (Directions)(int)directions - 1;
+                    }
+                else if ('R' == command[i])
+                    if ((int)directions + 1 > (int)Directions.North)
+                    {
+                        directions = Directions.West;
+                    }
+                    else
+                    {
+                        directions = (Directions)(int)directions + 1;
+                    }
+                else if ('M' == command[i])
+                {
+                    if (!Move())
+                        Console.WriteLine("Hatalı giriş...");
+                }
+                else
+                {
+                    Console.WriteLine("Yanlış girdi...");
+                }
+            }
+        }
+
     }
 }
