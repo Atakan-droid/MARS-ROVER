@@ -1,5 +1,6 @@
 ﻿using OymakGroupCase.Business.Concrete;
 using OymakGroupCase.Entities.Concrete;
+using OymakGroupCase.Properties;
 using System;
 
 namespace OymakGroupCase
@@ -19,7 +20,7 @@ namespace OymakGroupCase
             var roversPosition=roverManager.CurrentPosition().Split(" ");
             Position newPosition = new Position(Int32.Parse(roversPosition[0]),Int32.Parse(roversPosition[1]));
 
-            var newDirection=roverManager.setDirection(roversPosition[2]);
+            var newDirection=GetDirection.setDirection(roversPosition[2]);
             Rover rover1 = new Rover(plateau,newPosition,newDirection);
             RoverManager roverManager1 = new RoverManager(rover1);
             roverManager1.NewPosition(3,3,Properties.Directions.East);

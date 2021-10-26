@@ -11,12 +11,12 @@ namespace OymakGroupCase.Business.Concrete
 {
     public class RoverManager : IRoverService
     {
-        public  Rover _rover;
+        public Rover _rover;
         public RoverManager(Rover rover)
         {
             _rover = rover;
         }
-        public  Directions directions = Directions.North;
+        public Directions directions = Directions.North;
         public string CurrentPosition()
         {
             return _rover.position.x + " " + _rover.position.y + " " + _rover.directions;
@@ -104,26 +104,6 @@ namespace OymakGroupCase.Business.Concrete
             directions = direction;
         }
 
-        public Directions setDirection(string direction)
-        {
-            Directions _directions=Directions.North;
-            switch (direction)
-            {
-                case "North":
-                    _directions=Directions.North;
-                    break;
-                case "East":
-                    _directions=Directions.East;
-                    break;
-                case "South":
-                    _directions= Directions.South;
-                    break;
-                case "West":
-                    _directions=Directions.West;
-                    break;
 
-            }
-            return _directions;
-        }
     }
 }

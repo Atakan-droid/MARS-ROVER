@@ -15,6 +15,5 @@ namespace OymakGroupCase.Business.Abstract
         bool IsCorrectDirection();
         void Moving(string command);
         void NewPosition(int x,int y,Directions direction);
-        Directions setDirection(string direction);
     }
 }
