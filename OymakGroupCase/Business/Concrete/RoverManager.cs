@@ -22,19 +22,20 @@ namespace OymakGroupCase.Business.Concrete
             return _rover.position.x + " " + _rover.position.y + " " + _rover.directions;
         }
 
-        public Directions IsCorrectDirection()
+        public bool IsCorrectDirection()
         {
             Directions direction;
             try
             {
                 direction = _rover.directions;
+                return true;
             }
             catch (Exception)
             {
                 direction = Directions.North;
                 Console.WriteLine("Geçerli Yön değil...");
+                return false;
             }
-            return direction;
         }
 
         public bool Move()
@@ -96,7 +97,7 @@ namespace OymakGroupCase.Business.Concrete
         }
 
         //new position settling
-        public void NewPosition(Rover rover,int x, int y, Directions direction)
+        public void NewPosition(int x, int y, Directions direction)
         {
             _rover.position.x = x;
             _rover.position.y = y;

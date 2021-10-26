@@ -17,13 +17,14 @@ namespace OymakGroupCase
             Console.WriteLine(roverManager.CurrentPosition());
 
             var roversPosition=roverManager.CurrentPosition().Split(" ");
-            Position position1 = new Position(Int32.Parse(roversPosition[0]),Int32.Parse(roversPosition[1]));
+            Position newPosition = new Position(Int32.Parse(roversPosition[0]),Int32.Parse(roversPosition[1]));
 
             var newDirection=roverManager.setDirection(roversPosition[2]);
-            Rover rover1 = new Rover(plateau,position1,newDirection);
-            roverManager.NewPosition(rover1,3,3,Properties.Directions.East);
-            roverManager.Moving("MMRMMRMRRM");
-                Console.WriteLine(roverManager.CurrentPosition());
+            Rover rover1 = new Rover(plateau,newPosition,newDirection);
+            RoverManager roverManager1 = new RoverManager(rover1);
+            roverManager1.NewPosition(3,3,Properties.Directions.East);
+            roverManager1.Moving("MMRMMRMRRM");
+             Console.WriteLine(roverManager1.CurrentPosition());
 
         }
     }

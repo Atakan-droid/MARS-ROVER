@@ -12,9 +12,9 @@ namespace OymakGroupCase.Business.Abstract
     {
         string CurrentPosition();
         bool Move();
-        Directions IsCorrectDirection();
+        bool IsCorrectDirection();
         void Moving(string command);
-        void NewPosition(Rover rover,int x,int y,Directions direction);
+        void NewPosition(int x,int y,Directions direction);
         Directions setDirection(string direction);
     }
 }
