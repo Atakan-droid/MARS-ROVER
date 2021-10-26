@@ -10,15 +10,14 @@ namespace OymakGroupCase.UnitTests
     [TestClass]
     public class OymakGroupCase
     {
-        
+        static Plateau plateau = new Plateau(5, 5);
         [TestMethod]
         public void Given_5_5_plateau_and_1_2_positionIsCorrect()
-        {
-            Position position = new Position(1, 2);
-            Plateau plateau = new Plateau(5, 5);
-            Rover rover = new Rover(plateau, position, Properties.Directions.North);
+        {        
+            Rover rover = new Rover(plateau, new Position(1,2),Directions.North);
             IsRoverWorks ýsRoverWorks = new IsRoverWorks(new RoverManager(rover));
-            var output = ýsRoverWorks.IsOutputCorrect();
+            var input = "LMLMLMLMM";
+            var output = ýsRoverWorks.IsOutputCorrect(input);
             Assert.AreEqual("1 3 North",output);
 
         }
@@ -26,11 +25,10 @@ namespace OymakGroupCase.UnitTests
         [TestMethod]
         public void Given_5_5_plateau_and_3_3_positionIsCorrect()
         {
-            Position position = new Position(3, 3);
-            Plateau plateau = new Plateau(5, 5);
-            Rover rover = new Rover(plateau, position, Properties.Directions.East);
+            Rover rover = new Rover(plateau, new Position(3,3),Directions.East);
             IsRoverWorks ýsRoverWorks = new IsRoverWorks(new RoverManager(rover));
-            var output = ýsRoverWorks.NextOutputCorrect();
+            var input = "MMRMMRMRRM";
+            var output = ýsRoverWorks.IsOutputCorrect(input);
             Assert.AreEqual("5 1 East", output);
 
         }
@@ -38,8 +36,7 @@ namespace OymakGroupCase.UnitTests
     }
     public interface IisRoverWorks
     {
-        string IsOutputCorrect();
-        string NextOutputCorrect();
+        string IsOutputCorrect(string input);
         bool IsInputCorrect(string input);
 
     }
@@ -60,16 +57,11 @@ namespace OymakGroupCase.UnitTests
             return false;
         }
 
-        public string IsOutputCorrect()
+        public string IsOutputCorrect(string input)
         {
-            _roverService.Moving("LMLMLMLMM");
+            _roverService.Moving(input);
             return _roverService.CurrentPosition();
         }
 
-        public string NextOutputCorrect()
-        {
-            _roverService.Moving("MMRMMRMRRM");
-            return _roverService.CurrentPosition();
-        }
     }
 }
