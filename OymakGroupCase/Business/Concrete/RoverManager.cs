@@ -95,5 +95,34 @@ namespace OymakGroupCase.Business.Concrete
             }
         }
 
+        //new position settling
+        public void NewPosition(Rover rover,int x, int y, Directions direction)
+        {
+            _rover.position.x = x;
+            _rover.position.y = y;
+            directions = direction;
+        }
+
+        public Directions setDirection(string direction)
+        {
+            Directions _directions=Directions.North;
+            switch (direction)
+            {
+                case "North":
+                    _directions=Directions.North;
+                    break;
+                case "East":
+                    _directions=Directions.East;
+                    break;
+                case "South":
+                    _directions= Directions.South;
+                    break;
+                case "West":
+                    _directions=Directions.West;
+                    break;
+
+            }
+            return _directions;
+        }
     }
 }
